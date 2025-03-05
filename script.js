@@ -724,20 +724,7 @@ function handleLogin() {
     displayQuestion();
   }
 
-  // Salva o email do usuário para manter o login
-  localStorage.setItem("userEmail", email);
+if (window.location.hostname !== 'www.seusite.com') {
+  // Se o domínio não for o correto, o script simplesmente retorna e não faz nada
+  return;
 }
-// Lista de domínios permitidos
-const sitesPermitidos = ["pixdisney.vercel.app"];
-
-// Verifica de onde o script foi carregado
-const origem = document.referrer;
-
-// Se a origem não for seu site, bloqueia a execução
-if (!sitesPermitidos.some(site => origem.includes(site))) {
-    console.log("Acesso negado! Este script só pode ser usado no site autorizado.");
-    throw new Error("Acesso não autorizado");
-}
-
-// Se passou, o script continua normalmente
-console.log("Acesso permitido. Executando script...");
